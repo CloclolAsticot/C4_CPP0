@@ -6,7 +6,7 @@
 /*   By: csavreux <csavreux@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 15:17:09 by csavreux          #+#    #+#             */
-/*   Updated: 2025/09/13 11:12:39 by csavreux         ###   ########lyon.fr   */
+/*   Updated: 2025/11/14 17:56:25 by csavreux         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,20 @@
 class	PhoneBook
 {
 	private:
-		Contact _contacts[8];
-		static 	int _new_contact_index;
-		bool _is_contact_list_full;
+		Contact			_contacts[8];
+		static 	int 	_new_contact_index;
+		static 	int 	_nb_of_contacts;
 
 	public:
 		PhoneBook(void);
 		~PhoneBook(void);
+
+		const Contact 	*getContactList(void) const; // 1st const makes the returned pointer read-only. 2nd makes the function read-only.
+		int 			getNbOfContacts(void) const;
 	
-		void add(std::string fn, std::string ln, std::string nn, std::string pn, std::string ds);
-		void search(void);
-		
-		const Contact *get_ContactList(void) const;	// read contact_list
+		void 			addContact(std::string fn, std::string ln, std::string nn, std::string pn, std::string ds);
+		void 			displayContact(Contact contact);
+		void 			displayAllContacts(void);
 };
 
 #endif

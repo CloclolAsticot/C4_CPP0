@@ -6,7 +6,7 @@
 /*   By: csavreux <csavreux@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 16:10:33 by csavreux          #+#    #+#             */
-/*   Updated: 2025/09/13 13:35:31 by csavreux         ###   ########lyon.fr   */
+/*   Updated: 2025/11/14 18:46:29 by csavreux         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,21 @@ void add_contact(PhoneBook *phonebook)
 	std::cout << "Darkest Secret : ";
 	std::getline(std::cin, ds);
 
-	phonebook->add(fn, ln, nn, pn, ds);
+	phonebook->addContact(fn, ln, nn, pn, ds);
+}
+
+void search(PhoneBook *phonebook)
+{
+	phonebook->displayAllContacts();
+	int index;
+	std::cout << "Enter the index of the contact you want to display : ";
+	std::cin >> index;
+	if (index >= phonebook->getNbOfContacts())
+	{
+		std::cout << "The index is out of range" << std::endl;
+		return;
+	}
+	phonebook->displayContact(phonebook->getContactList()[index]);
 }
 
 
@@ -48,6 +62,8 @@ int main(void)
 	
 	while (1)
 	{
+		std::cout << "Enter a command: ";
+		
 		// Get user command
 		std::string user_cmd;
 		std::getline(std::cin, user_cmd);
@@ -56,7 +72,7 @@ int main(void)
 		if (user_cmd.compare("ADD") == 0)
 			add_contact(&phonebook);
 		else if (user_cmd.compare("SEARCH") == 0)
-			phonebook.search();
+			search(&phonebook);
 		else if (user_cmd.compare("EXIT") == 0)
 			break;
 	}

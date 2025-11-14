@@ -2,21 +2,26 @@
 #				VARIABLES				#
 #########################################
 
-NAME = megaphone
+NAME = phonebook
 
 # Compilation
 CCX = c++
 CXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-# Source Files
-SRCS 	= 	Contact.cpp \
-			PhoneBook.cpp \
-			main.cpp \
-			Contact.hpp \
-			Phonebook.hpp
+# Directories
+D_SRCS 			= srcs
+D_INCS 			= incs
+D_OBJS 			= objs
 
-# Object Files
-OBJS = $(SRCS:.cpp=.o)
+# Source Files (only .cpp files)
+FILES 	= 	Contact.cpp \
+			PhoneBook.cpp \
+			main.cpp
+
+
+SRCS		= 	$(addprefix $(D_SRCS)/, $(FILES))
+INCS 		= 	-I ./$(D_INCS)
+OBJS 		= 	$(patsubst $(D_SRCS)/%.cpp, $(D_OBJS)/%.o, $(SRCS))
 
 #########################################
 #				   RULES				#
@@ -25,10 +30,12 @@ OBJS = $(SRCS:.cpp=.o)
 .PHONY : all
 all: $(NAME)
 
-%.o: %.c Makefile 
+$(D_OBJS)/%.o: $(D_SRCS)/%.cpp Makefile
 	@mkdir -p $(dir $@)
-	$(CCX) $(CXFLAGS) -c $< -o $@ 
+	$(CCX) $(CXFLAGS) $(INCS) -c $< -o $@ 
 
+$(D_OBJS):
+	mkdir -p $(D_OBJS)
 
 $(NAME): $(OBJS)
 	$(CCX) $(CXFLAGS) $(OBJS) -o $(NAME)

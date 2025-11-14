@@ -1,0 +1,53 @@
+[
+ {
+  "directory": "/home/csavreux/Documents/42_projects/github_folders/C4_CPP0/ex01",
+  "arguments": [
+   "c++",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-std=c++98",
+   "-I",
+   "./incs",
+   "-c",
+   "srcs/Contact.cpp",
+   "-o",
+   "objs/Contact.o"
+  ],
+  "file": "srcs/Contact.cpp"
+ },
+ {
+  "directory": "/home/csavreux/Documents/42_projects/github_folders/C4_CPP0/ex01",
+  "arguments": [
+   "c++",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-std=c++98",
+   "-I",
+   "./incs",
+   "-c",
+   "srcs/PhoneBook.cpp",
+   "-o",
+   "objs/PhoneBook.o"
+  ],
+  "file": "srcs/PhoneBook.cpp"
+ },
+ {
+  "directory": "/home/csavreux/Documents/42_projects/github_folders/C4_CPP0/ex01",
+  "arguments": [
+   "c++",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-std=c++98",
+   "-I",
+   "./incs",
+   "-c",
+   "srcs/main.cpp",
+   "-o",
+   "objs/main.o"
+  ],
+  "file": "srcs/main.cpp"
+ }
+]
