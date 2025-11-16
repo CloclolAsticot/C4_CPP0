@@ -5,8 +5,8 @@
 NAME = megaphone
 
 # Compilation
-CCX = c++
-CXFLAGS = -Wall -Wextra -Werror -std=c++98
+CC = c++
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 # Source Files
 SRCS 	= 	megaphone.cpp
@@ -23,11 +23,11 @@ all: $(NAME)
 
 %.o: %.c Makefile 
 	@mkdir -p $(dir $@)
-	$(CCX) $(CXFLAGS) -c $< -o $@ 
+	$(CC) $(CFLAGS) -c $< -o $@ 
 
 
 $(NAME): $(OBJS)
-	$(CCX) $(CXFLAGS) $(OBJS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 .PHONY : clean
 clean:
