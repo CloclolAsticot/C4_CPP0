@@ -6,22 +6,19 @@
 /*   By: csavreux <csavreux@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 15:30:40 by csavreux          #+#    #+#             */
-/*   Updated: 2025/11/14 14:59:44 by csavreux         ###   ########lyon.fr   */
+/*   Updated: 2025/11/16 17:34:10 by csavreux         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
-#include <iostream>
 
 Contact::Contact(void)
 {
-	// std::cout << "Contact Constructer called" << std::endl;
 	return;
 }
 
 Contact::~Contact(void)
 {
-	// std::cout << "Contact Destructor called" << std::endl;
 	return;
 }
 

@@ -5,8 +5,9 @@
 NAME = phonebook
 
 # Compilation
-CCX = c++
-CXFLAGS = -Wall -Wextra -Werror -std=c++98
+CC = c++
+CFLAGS = -Wall -Wextra -Werror -std=c++98
+DEPFLAGS = -MMD -MP
 
 # Directories
 D_SRCS 			= srcs
@@ -22,28 +23,31 @@ FILES 	= 	Contact.cpp \
 SRCS		= 	$(addprefix $(D_SRCS)/, $(FILES))
 INCS 		= 	-I ./$(D_INCS)
 OBJS 		= 	$(patsubst $(D_SRCS)/%.cpp, $(D_OBJS)/%.o, $(SRCS))
+DEPS		=	$(patsubst $(D_SRCS)/%.cpp, $(D_OBJS)/%.d, $(SRCS))
 
 #########################################
 #				   RULES				#
 #########################################
 
 .PHONY : all
-all: $(NAME)
+all: $(D_OBJS) $(NAME)
 
 $(D_OBJS)/%.o: $(D_SRCS)/%.cpp Makefile
 	@mkdir -p $(dir $@)
-	$(CCX) $(CXFLAGS) $(INCS) -c $< -o $@ 
+	$(CC) $(CFLAGS) $(DEPFLAGS) $(INCS) -c $< -o $@ 
 
 $(D_OBJS):
 	mkdir -p $(D_OBJS)
 
 $(NAME): $(OBJS)
-	$(CCX) $(CXFLAGS) $(OBJS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+
+-include $(DEPS)
 
 .PHONY : clean
 clean:
 	@echo "clean objs from /$(NAME)"
-	@rm -f $(OBJS)
+	@rm -rf $(D_OBJS)
 
 .PHONY : fclean
 fclean: 

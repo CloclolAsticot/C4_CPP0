@@ -6,7 +6,7 @@
 /*   By: csavreux <csavreux@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 15:17:09 by csavreux          #+#    #+#             */
-/*   Updated: 2025/11/14 17:56:25 by csavreux         ###   ########lyon.fr   */
+/*   Updated: 2025/11/16 17:34:05 by csavreux         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PHONEBOOK_HPP
 
 #include "Contact.hpp"
+
 class	PhoneBook
 {
 	private:

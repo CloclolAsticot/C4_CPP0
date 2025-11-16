@@ -6,13 +6,12 @@
 /*   By: csavreux <csavreux@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 15:30:35 by csavreux          #+#    #+#             */
-/*   Updated: 2025/11/14 17:58:33 by csavreux         ###   ########lyon.fr   */
+/*   Updated: 2025/11/16 17:34:56 by csavreux         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 #include <iostream>
-#include <string>
 
 PhoneBook::PhoneBook(void)
 {
@@ -50,11 +49,11 @@ void PhoneBook::addContact(std::string fn, std::string ln, std::string nn, std::
 
 void PhoneBook::displayContact(Contact contact)
 {
-	std::cout << contact.getFirstname() << std::endl;
-	std::cout << contact.getLastname() << std::endl;
-	std::cout << contact.getNickname() << std::endl;
-	std::cout << contact.getPhoneNumber() << std::endl;
-	std::cout << contact.getDarkestSecret() << std::endl;
+	std::cout << "First name: " << contact.getFirstname() << std::endl;
+	std::cout << "Last name: " << contact.getLastname() << std::endl;
+	std::cout << "Nickname: " << contact.getNickname() << std::endl;
+	std::cout << "Phone number: " << contact.getPhoneNumber() << std::endl;
+	std::cout << "Darkest secret: " << contact.getDarkestSecret() << std::endl;
 }
 
 static void display_field(std::string field)
@@ -85,7 +84,8 @@ static void display_brief_contact(Contact contact)
 	display_field(contact.getLastname());
 	std::cout << "|";
 	display_field(contact.getNickname());
-	std::cout << std::endl << std::endl;
+	std::cout << "|";
+	std::cout << std::endl;
 }
 
 void PhoneBook::displayAllContacts(void)
@@ -95,6 +95,7 @@ void PhoneBook::displayAllContacts(void)
 		std::cout << "         " << i << "|";
 		display_brief_contact(this->_contacts[i]);
 	}
+	std::cout << std::endl;
 	return;
 }
 
