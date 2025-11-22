@@ -6,12 +6,11 @@
 /*   By: csavreux <csavreux@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 16:10:33 by csavreux          #+#    #+#             */
-/*   Updated: 2025/11/22 14:01:21 by csavreux         ###   ########lyon.fr   */
+/*   Updated: 2025/11/22 14:13:08 by csavreux         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
-#include <cstdlib>
 #include <iostream>
 
 static void	*fill_field(std::string *field, std::string field_name)
