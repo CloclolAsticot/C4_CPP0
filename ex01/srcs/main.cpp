@@ -6,7 +6,7 @@
 /*   By: csavreux <csavreux@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 16:10:33 by csavreux          #+#    #+#             */
-/*   Updated: 2025/11/16 17:38:11 by csavreux         ###   ########lyon.fr   */
+/*   Updated: 2025/11/22 13:20:43 by csavreux         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,19 @@ static bool is_positive_number(std::string str)
 	return (true);
 }
 
+static bool is_index_valid(std::string str_index, int *index, int nb_of_contacts)
+{
+	if (is_positive_number(str_index) == false)
+	{
+		*index = -1;
+		return (false);
+	}
+	*index = std::atoi(str_index.c_str());
+	if (*index < 0 || *index >= nb_of_contacts)
+		return (false);
+	return (true);
+}
+
 void *search(PhoneBook *phonebook)
 {
 	std::string str_index;
@@ -84,18 +97,11 @@ void *search(PhoneBook *phonebook)
 	std::cout << "Enter the index of the contact you want to display: ";
 	if(std::getline(std::cin, str_index) == NULL)
 		return (NULL);
-	if (is_positive_number(str_index) == false)
+	if (is_index_valid(str_index, &index, phonebook->getNbOfContacts()) == false)
 	{
 		std::cout << "The index is not valid." << std::endl;
 		std::cout << std::endl;
 		return (phonebook);		
-	}
-	index = std::atoi(str_index.c_str());
-	if (index < 0 || index >= phonebook->getNbOfContacts())
-	{
-		std::cout << "The index is not valid." << std::endl;
-		std::cout << std::endl;
-		return (phonebook);
 	}
 	std::cout << std::endl;
 	phonebook->displayContact(phonebook->getContactList()[index]);
