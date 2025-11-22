@@ -6,7 +6,7 @@
 /*   By: csavreux <csavreux@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 16:10:33 by csavreux          #+#    #+#             */
-/*   Updated: 2025/11/22 13:20:43 by csavreux         ###   ########lyon.fr   */
+/*   Updated: 2025/11/22 13:52:51 by csavreux         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,25 +58,14 @@ void *add_contact(PhoneBook *phonebook)
 	return (phonebook);
 }
 
-static bool is_positive_number(std::string str)
+static bool is_index_valid(const std::string &str_index, int *index, int nb_of_contacts)
 {
-	int len = str.size();
-	for (int i = 0; i < len; i++)
-	{
-		if (std::isdigit(str.at(i)) == false)
-			return (false);
-	}
-	return (true);
-}
-
-static bool is_index_valid(std::string str_index, int *index, int nb_of_contacts)
-{
-	if (is_positive_number(str_index) == false)
-	{
-		*index = -1;
+	*index = -1;
+	if (str_index.size() != 1)
 		return (false);
-	}
-	*index = std::atoi(str_index.c_str());
+	if (!std::isdigit(static_cast<unsigned char>(str_index.at(0))))
+		return (false);
+	*index = str_index.at(0) - '0';
 	if (*index < 0 || *index >= nb_of_contacts)
 		return (false);
 	return (true);
