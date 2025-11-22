@@ -6,13 +6,13 @@
 /*   By: csavreux <csavreux@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/30 14:12:00 by csavreux          #+#    #+#             */
-/*   Updated: 2025/08/30 17:23:03 by csavreux         ###   ########lyon.fr   */
+/*   Updated: 2025/11/22 14:01:49 by csavreux         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 
-void shout_arg(char *arg)
+static void	shout_arg(char *arg)
 {
 	while (*arg != '\0')
 	{
