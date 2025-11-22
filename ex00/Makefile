@@ -21,7 +21,7 @@ OBJS = $(SRCS:.cpp=.o)
 .PHONY : all
 all: $(NAME)
 
-%.o: %.c Makefile 
+%.o: %.cpp Makefile 
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@ 
 
